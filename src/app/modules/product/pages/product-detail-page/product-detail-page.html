@@ -1,0 +1,101 @@
+<section class="section-product">
+  <div class="product-detail-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+      <nav class="breadcrumb-nav">
+        <a href="/" class="breadcrumb-link">Inicio</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="/products" class="breadcrumb-link">Productos</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">{{ productResource.value()?.name }}</span>
+      </nav>
+    </div>
+
+    <!-- Main Product Layout (50/50 Columns) -->
+    <div class="product-main-grid">
+      <div class="image-column">
+        <app-product-image-preview [productImages]="productImages()"></app-product-image-preview>
+      </div>
+      <div class="info-column">
+        <app-product-info-preview [product]="productResource.value()"></app-product-info-preview>
+        
+        <!-- Premium Trust Badges -->
+        <div class="trust-badges-grid">
+          <div class="badge-item">
+            <i class="ri-truck-line badge-icon"></i>
+            <div class="badge-info">
+              <h4 class="badge-title">Envío Express</h4>
+              <p class="badge-desc">Gratis en compras > $50</p>
+            </div>
+          </div>
+          <div class="badge-item">
+            <i class="ri-shield-check-line badge-icon"></i>
+            <div class="badge-info">
+              <h4 class="badge-title">Calidad Orgánica</h4>
+              <p class="badge-desc">100% fresco y ecológico</p>
+            </div>
+          </div>
+          <div class="badge-item">
+            <i class="ri-secure-payment-line badge-icon"></i>
+            <div class="badge-info">
+              <h4 class="badge-title">Pago Seguro</h4>
+              <p class="badge-desc">Transacciones cifradas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extra Tabs / Details Section -->
+    <div class="product-tabs-section">
+      <div class="tabs-header">
+        <button type="button" class="tab-button active">Descripción Detallada</button>
+        <button type="button" class="tab-button">Especificaciones Técnicas</button>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane">
+          <p class="long-desc">
+            Este producto ha sido seleccionado cuidadosamente bajo los más altos estándares de calidad y frescura. 
+            Cultivado de manera local y sostenible, garantizando un sabor auténtico y conservando todas sus propiedades nutritivas intactas. 
+            Es la opción perfecta para quienes buscan incorporar frescura y salud a su mesa diaria.
+          </p>
+          <div class="specs-grid">
+            <div class="spec-row">
+              <span class="spec-label">Categoría</span>
+              <span class="spec-value">{{ productResource.value()?.category || 'General' }}</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Disponibilidad</span>
+              <span class="spec-value highlight">
+                {{ productResource.value()?.stock ? (productResource.value()?.stock + ' unidades en stock') : 'Agotado' }}
+              </span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tiempo de Entrega</span>
+              <span class="spec-value">24 a 48 horas laborables</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Certificación</span>
+              <span class="spec-value">Certificado Ecológico Oficial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    @if (relatedProducts().length > 0) {
+      <div class="related-products-section">
+        <div class="section-title-wrapper">
+          <h3 class="related-title">También te podría interesar</h3>
+          <p class="related-subtitle">Una selección de productos frescos similares que te encantarán</p>
+        </div>
+        <div class="related-grid">
+          @for (prod of relatedProducts(); track prod.id) {
+            <app-product-card [product]="prod" class="related-card"></app-product-card>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

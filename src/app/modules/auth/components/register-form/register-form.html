@@ -1,0 +1,61 @@
+<form class="cr-content-form" (submit)="onSubmit($event)">
+  <div class="form-group">
+    <label for="name" class="label-auth">Nombre*</label>
+    <input
+      class="input-auth"
+      type="text"
+      [formField]="registerForm.name"
+      placeholder="Ingrese su nombre"
+    />
+    @if (registerForm.name().touched() && registerForm.name().invalid()) {
+      <span class="error-message">{{ registerForm.name().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="form-group">
+    <label for="email" class="label-auth">Correo Electrónico*</label>
+    <input
+      class="input-auth"
+      type="email"
+      [formField]="registerForm.email"
+      placeholder="Ingrese su correo electrónico"
+    />
+    @if (registerForm.email().touched() && registerForm.email().invalid()) {
+      <span class="error-message">{{ registerForm.email().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="form-group">
+    <label for="password" class="label-auth">Contraseña*</label>
+    <input
+      class="input-auth"
+      type="password"
+      [formField]="registerForm.password"
+      placeholder="Ingrese su contraseña"
+    />
+    @if (registerForm.password().touched() && registerForm.password().invalid()) {
+      <span class="error-message">{{ registerForm.password().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword" class="label-auth">Confirmar Contraseña*</label>
+    <input
+      class="input-auth"
+      type="password"
+      [formField]="registerForm.confirmPassword"
+      placeholder="Confirme su contraseña"
+    />
+    @if (registerForm.confirmPassword().touched() && registerForm.confirmPassword().invalid()) {
+      <span class="error-message">{{ registerForm.confirmPassword().errors()[0].message }}</span>
+    }
+  </div>
+  <br />
+  <div class="register-actions">
+    <button type="submit" class="button" [disabled]="isLoading()">
+      @if (isLoading()) {
+        Cargando...
+      } @else {
+        Crear Cuenta
+      }
+    </button>
+    <a routerLink="/login" class="login-link">¿Ya tienes una cuenta?</a>
+  </div>
+</form>

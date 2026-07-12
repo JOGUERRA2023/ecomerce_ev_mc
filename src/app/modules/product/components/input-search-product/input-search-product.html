@@ -1,0 +1,59 @@
+<div class="cr-search">
+  <input
+    [(ngModel)]="searchTerm"
+    name="searchTerm"
+    class="search-input"
+    type="text"
+    placeholder="Buscar productos..."
+    autocomplete="off"
+  />
+  <select class="form-select" aria-label="Seleccionar categoría">
+    <option value="0">Categorías</option>
+    @for (category of categories(); track category.id) {
+      <option [value]="category.id">{{ category.name }}</option>
+    }
+  </select>
+  <button class="search-btn" aria-label="Buscar" type="button" (click)="searchProduct()">
+    <i class="ri-search-line"></i>
+  </button>
+
+  @if (products().length > 0) {
+    <div class="search-dropdown">
+      @for (product of products(); track product.id) {
+        <button (click)="searchProduct()" class="search-result-item">
+          <div class="result-image">
+            <i class="ri-shopping-bag-line"></i>
+          </div>
+          <div class="result-info">
+            <h4 class="result-name">{{ product.name }}</h4>
+            <p class="result-category">{{ product.category }}</p>
+          </div>
+          <div class="result-price">
+            @if (product.discount) {
+              <div class="flex items-center gap-2">
+                <span class="price-old">${{ product.price }}</span>
+                <span class="price-new"
+                  >${{ ((product?.price ?? 0) * (1 - 0 / 100)).toFixed(2) }}</span
+                >
+              </div>
+              <span class="discount-badge">-{{ product.discount }}%</span>
+            } @else {
+              <span class="price-new"
+                >${{ ((product?.price ?? 0) * (1 - 0 / 100)).toFixed(2) }}</span
+              >
+            }
+          </div>
+        </button>
+      }
+    </div>
+  }
+
+  @if (products().length === 0 && searchTerm()) {
+    <div class="no-results">
+      <div class="no-results-content">
+        <i class="ri-search-line"></i>
+        <p>No se encontraron productos para "{{ this.searchTerm() }}"</p>
+      </div>
+    </div>
+  }
+</div>

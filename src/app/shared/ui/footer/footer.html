@@ -1,0 +1,116 @@
+<footer class="cr-footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-col-main">
+        <div class="footer-logo-section">
+          <div class="pb-[15px]">
+            <img src="/img/logo/logo.png" alt="logo" />
+          </div>
+          <p class="footer-description">
+            Carrot es el mercado más grande de productos de abarrotes. Obtén tus necesidades diarias
+            en nuestra tienda.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-title footer-title-hidden">Contáctanos</h4>
+          <ul class="footer-list max-w-[300px]">
+            <li class="contact-item">
+              <i class="ri-map-pin-line text-brand-primary text-xl"></i>
+              Mz B' Lote 15 6ta Etapa Av. Venezuela 123, Lima, Perú
+            </li>
+            <li class="contact-item">
+              <a href="mailto:mitocommerce&#64;mitocode.com" class="footer-link">
+                <i class="ri-mail-line text-brand-primary text-xl"></i>
+                mitocommerce&#64;mitocode.com
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="tel:+911234567890 " class="footer-link">
+                <i class="ri-phone-line text-brand-primary text-xl"></i>
+                +91 123 4567890
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col-sm">
+        <div>
+          <h4 class="footer-title">Compañía</h4>
+          <ul class="footer-list">
+            @for (link of companyLinks; track link) {
+              <li class="footer-list-item">
+                <a [href]="link.url" class="footer-link">
+                  {{ link.title }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-col-sm">
+        <div>
+          <h4 class="footer-title">Categorías</h4>
+          <ul class="footer-list">
+            @for (cat of categories(); track cat.id) {
+              <li class="footer-list-item">
+                <a
+                  [routerLink]="['/products']"
+                  [queryParams]="{ category: cat.name.toLocaleLowerCase() }"
+                  class="footer-link"
+                >
+                  {{ cat.name }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-col-lg">
+        <div class="newsletter-section">
+          <h4 class="footer-title">Suscríbete a Nuestro Boletín</h4>
+          <div class="newsletter-form">
+            <form class="relative" (submit)="$event.preventDefault(); onNewsletterSubmit()">
+              <input
+                [formField]="footerForm.email"
+                class="newsletter-input"
+                type="email"
+                placeholder="Ingresa tu correo..."
+              />
+              @if (footerForm.email().touched() && footerForm.email().errors()) {
+                <span class="text-red-500">El correo es requerido</span>
+              }
+              <button type="submit" class="newsletter-btn" [disabled]="footerForm().invalid()">
+                <i class="ri-send-plane-fill"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="social-media">
+            @for (social of socialMedia; track social) {
+              <span class="social-item">
+                <a
+                  [href]="social.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-link"
+                >
+                  <i [class]="social.icon"></i>
+                </a>
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p class="copyright-text">
+        &copy; {{ currentYear() }} <a href="/">Carrot</a>, Todos los derechos reservados
+      </p>
+    </div>
+  </div>
+</footer>

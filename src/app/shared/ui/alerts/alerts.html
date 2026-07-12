@@ -1,0 +1,15 @@
+<div class="alert-container">
+  @for (alert of alertService.alerts(); track alert.id) {
+    <div class="alert-toast" [class]="alert.type">
+      @if (alert.type === 'success') {
+        <i class="ri-checkbox-circle-fill"></i>
+      } @else if (alert.type === 'info') {
+        <i class="ri-info-card-fill"></i>
+      } @else if (alert.type === 'error') {
+        <i class="ri-close-circle-fill"></i>
+      }
+      <span>{{ alert.message }}</span>
+    </div>
+  }
+</div>
+

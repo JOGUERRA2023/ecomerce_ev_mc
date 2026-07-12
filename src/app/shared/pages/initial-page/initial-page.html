@@ -1,0 +1,45 @@
+<app-hero />
+
+@defer (hydrate on viewport) {
+  <app-coupons-section />
+} @placeholder {
+  <div class="h-[250px] w-full bg-slate-50 animate-skeleton rounded-lg"></div>
+}
+
+
+@defer (on timer(3s)) {
+  <app-popular-products />
+} @placeholder {
+  <section class="py-[100px] max-[1199px]:py-[70px] max-[991px]:py-[50px] bg-white w-full">
+    <div class="mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] px-[12px]">
+      <div class="mb-[30px] text-center">
+        <div class="h-8 w-64 mx-auto rounded mb-3 animate-skeleton"></div>
+        <div class="h-4 w-96 mx-auto rounded animate-skeleton"></div>
+      </div>
+      <div class="grid grid-cols-5 gap-[24px] w-full max-[1400px]:grid-cols-4 max-[991px]:grid-cols-3 max-[768px]:grid-cols-2 max-[480px]:grid-cols-1">
+        @for (i of [1, 2, 3, 4, 5]; track i) {
+          <div class="w-full">
+            <div class="border border-solid border-[#e9e9e9] rounded-[8px] p-[12px] bg-white flex flex-col h-full">
+              <div class="aspect-square rounded-[5px] mb-[15px] animate-skeleton"></div>
+              <div class="flex-1 flex flex-col text-center pt-[24px]">
+                <div class="flex justify-between items-center mb-[12px] px-2">
+                  <div class="h-3 w-16 rounded animate-skeleton"></div>
+                  <div class="flex gap-0.5">
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                  </div>
+                </div>
+                <div class="h-4 w-3/4 mx-auto rounded mb-[8px] animate-skeleton"></div>
+                <div class="h-4 w-1/2 mx-auto rounded mb-[12px] animate-skeleton"></div>
+                <div class="h-5 w-24 mx-auto rounded animate-skeleton mt-auto"></div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

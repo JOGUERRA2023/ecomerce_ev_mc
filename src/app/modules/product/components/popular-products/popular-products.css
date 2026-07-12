@@ -1,0 +1,38 @@
+@reference "tailwindcss";
+
+.section-popular-product-shape {
+  @apply relative pb-[100px] max-[1200px]:pb-[70px] mt-[100px];
+}
+
+.popular-product-container {
+  @apply flex flex-wrap justify-between relative items-center mx-auto;
+  @apply min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px];
+}
+
+.cr-banner {
+  @apply mb-[15px] text-center;
+}
+
+.popular-title {
+  @apply text-[32px] font-bold leading-[1.2] text-[#2b2b2d];
+  @apply max-[1200px]:text-[28px] max-[992px]:text-[25px] max-[768px]:text-[22px];
+  font-family: 'Manrope', sans-serif;
+}
+
+.cr-banner-sub-title {
+  @apply w-full;
+}
+
+.popular-subtitle {
+  @apply max-w-[600px] m-auto text-[14px] text-[#7a7a7a] leading-[22px] text-center;
+  @apply max-[1200px]:w-[80%] max-[992px]:w-full;
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-content {
+  @apply flex flex-wrap w-full mb-[-24px];
+}
+
+.product-grid {
+  @apply grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 flex-wrap w-full mb-[-24px];
+}

@@ -1,0 +1,58 @@
+<div
+  class="filter-container"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+  data-aos-delay="400"
+>
+  <div class="cr-shop-sideview">
+    <div class="cr-shop-categories">
+      <h4 class="cr-shop-sub-title">Categoría</h4>
+      <div class="cr-checkbox">
+        @for (cat of categories(); track cat.id) {
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              [id]="'cat-' + cat.id"
+              [checked]="selectedCategoryId() === cat.id"
+              (change)="toggleCategory(cat.id)"
+            />
+            <label [for]="'cat-' + cat.id">{{ cat.name }}</label>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="cr-shop-price">
+      <h4 class="cr-shop-sub-title">Precio</h4>
+      <div class="price-range-slider">
+        <div class="quick-price-buttons">
+          <button
+            type="button"
+            class="price-button"
+            [class.active]="selectedPrice()?.min === 0 && selectedPrice()?.max === 100"
+            (click)="selectPrice(0, 100)"
+          >
+            Hasta S/ 100
+          </button>
+          <button
+            type="button"
+            class="price-button"
+            [class.active]="selectedPrice()?.min === 100 && selectedPrice()?.max === 500"
+            (click)="selectPrice(100, 500)"
+          >
+            De S/ 100 a S/ 500
+          </button>
+          <button
+            type="button"
+            class="price-button"
+            [class.active]="selectedPrice()?.min === 500 && selectedPrice()?.max === 999999"
+            (click)="selectPrice(500, 999999)"
+          >
+            De S/ 500 a más
+          </button>
+        </div>
+
+        <button type="button" class="cr-button" (click)="applyFilters()">Aplicar Filtro</button>
+      </div>
+    </div>
+  </div>
+</div>

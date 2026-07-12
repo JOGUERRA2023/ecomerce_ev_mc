@@ -1,0 +1,161 @@
+@reference "tailwindcss";
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ===== HERO SECTION ===== */
+.section-hero {
+  @apply relative z-[1];
+}
+
+/* ===== SLIDER ===== */
+.cr-slider {
+  @apply relative overflow-hidden;
+  @apply h-[80vh] max-[1200px]:h-[600px] max-[768px]:h-[500px] max-[480px]:h-[400px] max-[360px]:h-[350px];
+}
+
+.slide-item {
+  @apply transition-opacity duration-500 ease-in-out absolute inset-0;
+}
+
+.slide-item.active {
+  @apply opacity-100 z-[2];
+}
+
+.slide-item.inactive {
+  @apply opacity-0 z-[1];
+}
+
+/* ===== HERO BANNER ===== */
+.cr-hero-banner {
+  @apply w-full relative;
+  @apply h-[80vh] max-[1200px]:h-[600px] max-[768px]:h-[500px] max-[480px]:h-[400px] max-[360px]:h-[350px];
+}
+
+.cr-hero-banner img {
+  @apply object-cover -z-10;
+}
+
+/* ===== HERO CONTAINER ===== */
+.hero-container {
+  @apply flex flex-wrap justify-between relative z-10 items-center mx-auto;
+  @apply min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px];
+}
+
+/* ===== LEFT SIDE CONTENT ===== */
+.cr-left-side-contain {
+  @apply max-w-[550px] flex flex-col justify-center;
+  @apply h-[80vh] max-[1200px]:max-w-[400px] max-[1200px]:h-[600px];
+  @apply max-[768px]:max-w-[290px] max-[768px]:h-[500px];
+  @apply max-[480px]:max-w-[250px] max-[480px]:h-[400px];
+  @apply max-[360px]:max-w-[210px] max-[360px]:h-[350px];
+}
+
+.hero-subtitle {
+  @apply mb-[20px] text-[20px] font-bold leading-[1.2];
+  @apply max-[992px]:mb-[15px] max-[768px]:text-[14px] max-[768px]:font-normal;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-subtitle span {
+  @apply mr-[5px] font-bold;
+  color: var(--brand-primary);
+  border-bottom: 2px solid var(--brand-primary);
+}
+
+.hero-title {
+  @apply mb-[25px] text-[55px] font-extrabold leading-[68px] text-black relative;
+  @apply max-[1400px]:text-[48px] max-[1400px]:leading-[56px];
+  @apply max-[1200px]:text-[40px] max-[1200px]:leading-[46px];
+  @apply max-[992px]:text-[28px] max-[992px]:leading-[36px] max-[992px]:mb-[20px];
+  @apply max-[768px]:text-[24px];
+  @apply max-[480px]:mb-0;
+  @apply max-[360px]:text-[20px] max-[360px]:leading-[26px];
+  @apply max-[320px]:text-[22px] max-[320px]:leading-[24px] max-[320px]:mb-[10px];
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-description {
+  @apply mb-0 text-[15px] text-[#7a7a7a] leading-[1.75];
+  @apply max-[768px]:text-[14px] max-[480px]:hidden;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* ===== BUTTONS ===== */
+.cr-last-buttons {
+  @apply mt-[30px] flex max-[992px]:mt-[18px];
+}
+
+.cr-button {
+  @apply mr-[20px] h-[40px] font-bold transition-all duration-300 ease-in-out;
+  @apply py-[8px] px-[22px] text-[14px] capitalize leading-[1.2];
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  color: white;
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
+}
+
+/* ===== NAVIGATION ARROWS ===== */
+.slider-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-[3] w-[40px] h-[40px];
+  @apply bg-white/80 rounded-full;
+  @apply flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer;
+  @apply max-[768px]:w-[35px] max-[768px]:h-[35px];
+  &:hover {
+    background-color: var(--brand-primary);
+  }
+}
+
+.slider-arrow-left {
+  @apply left-[20px] max-[768px]:left-[10px];
+}
+
+.slider-arrow-right {
+  @apply right-[20px] max-[768px]:right-[10px];
+}
+
+.slider-arrow i {
+  @apply text-[24px] text-black;
+}
+
+.slider-arrow:hover i {
+  @apply text-white;
+}
+
+/* ===== DOTS ===== */
+.slider-dots {
+  @apply absolute bottom-[30px] left-1/2 -translate-x-1/2 z-[3] flex gap-[10px];
+  @apply max-[768px]:bottom-[20px];
+}
+
+.slider-dot {
+  @apply w-[10px] h-[10px] rounded-full transition-all duration-300;
+}
+
+.slider-dot.active {
+  @apply w-[30px];
+  background-color: var(--brand-primary);
+}
+
+.slider-dot.inactive {
+  @apply bg-white/60 hover:bg-white;
+}

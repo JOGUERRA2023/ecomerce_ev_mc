@@ -1,0 +1,81 @@
+@reference "tailwindcss";
+
+.product-list-container {
+  @apply w-full mb-[30px];
+}
+
+.cr-shop-bredekamp {
+  @apply mb-[30px] flex flex-wrap items-center bg-[#f7f7f8] border border-solid border-[#e9e9e9] rounded-[5px];
+}
+
+.cr-toggle {
+  @apply m-[5px] flex;
+}
+
+.gridCol {
+  @apply h-[35px] w-[35px] flex justify-center items-center mr-[7px] bg-white;
+  @apply border border-solid border-[#e9e9e9] rounded-[5px] max-[360px]:mr-[7px];
+}
+
+.active-grid {
+  @apply text-white;
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.gridCol i {
+  @apply text-[20px];
+}
+
+.center-content {
+  @apply flex justify-start items-center flex-1;
+}
+
+.center-content span {
+  @apply px-[12px] text-[14px] leading-[1.875] text-[#7a7a7a] max-[768px]:hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.col-100 {
+  @apply flex flex-wrap mb-[-24px];
+}
+
+.cr-product-box {
+  @apply w-full px-[12px] mb-[24px] grid grid-cols-4;
+}
+
+.cr-pagination {
+  @apply mt-[24px] flex justify-center w-full;
+}
+
+.pagination {
+  @apply flex text-[1rem] border border-solid border-[#eee] rounded-[10px];
+}
+
+.page-item {
+  @apply px-3 py-1.5 border-r border-solid border-[#eee] hover:bg-[#f7f7f8] cursor-pointer;
+}
+
+.page-item:first-child {
+  @apply bg-[#f7f7f8] rounded-l-[10px];
+}
+
+.page-item:last-child {
+  @apply rounded-r-[10px] border-r-0;
+}
+
+.page-item.disabled {
+  @apply cursor-not-allowed opacity-60;
+}
+
+.page-item.active {
+  @apply text-white;
+  background-color: var(--brand-primary);
+  &:hover {
+    background-color: var(--brand-primary);
+  }
+}
+
+.page-link {
+  @apply text-inherit;
+}

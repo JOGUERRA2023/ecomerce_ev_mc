@@ -1,0 +1,142 @@
+@reference "tailwindcss";
+
+/* ===== FOOTER ===== */
+.cr-footer {
+  @apply pt-[100px] max-lg:pt-[70px] bg-[#f7f7f8] relative;
+  @apply border-t border-solid border-[#e9e9e9];
+}
+
+.footer-container {
+  @apply flex flex-wrap justify-between relative items-center mx-auto;
+  @apply min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px];
+}
+
+.footer-top {
+  @apply flex flex-wrap w-full pb-[100px] max-lg:pb-[70px];
+}
+
+/* ===== COLUMNS ===== */
+.footer-col-main {
+  @apply lg:w-1/3 md:w-1/2 w-full px-3;
+}
+
+.footer-col-sm {
+  @apply lg:w-1/6 md:w-1/4 w-full px-3;
+}
+
+.footer-col-lg {
+  @apply lg:w-1/3 md:w-full w-full px-3;
+}
+
+/* ===== LOGO SECTION ===== */
+.footer-logo-section {
+  @apply max-w-[400px] mb-[15px];
+}
+
+.footer-logo-section img {
+  @apply w-[100px] block;
+}
+
+.footer-description {
+  @apply text-sm text-[#7a7a7a] mb-0 leading-[1.75];
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== TITLES ===== */
+.footer-title {
+  @apply relative text-lg font-bold leading-[1.3] text-black mb-[15px];
+  @apply md:py-[15px] md:mb-0 md:text-base md:border-b md:border-solid md:border-[#e9e9e9];
+  font-family: 'Manrope', sans-serif;
+}
+
+.footer-title-hidden {
+  @apply hidden md:block;
+}
+
+/* ===== LISTS ===== */
+.footer-list {
+  @apply max-md:hidden md:mt-6;
+}
+
+.footer-list-item {
+  @apply text-sm leading-[26px] text-[#777] relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-link {
+  @apply transition-all duration-300 ease-in-out relative text-sm leading-[26px] text-[#777];
+  font-family: 'Poppins', sans-serif;
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+/* ===== CONTACT INFO ===== */
+.contact-item {
+  @apply mb-3 text-sm leading-[26px] text-[#777] relative ;
+  @apply max-xl:mt-5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-item:first-child {
+  @apply mt-6;
+}
+
+.contact-item:last-child {
+  @apply mb-0;
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-section {
+  @apply max-lg:mt-[50px] max-lg:pt-[50px] max-lg:border-t max-lg:border-solid max-lg:border-[#e1dfdf];
+  @apply md:mt-0 md:pt-0 md:border-0;
+}
+
+.newsletter-form {
+  @apply max-md:hidden max-lg:max-w-[500px] md:mt-6;
+}
+
+.newsletter-input {
+  @apply w-full h-[44px] py-[5px] px-[15px] border border-solid border-[#e9e9e9] outline-0 rounded-[5px];
+}
+
+.newsletter-btn {
+  @apply w-[50px] absolute right-0 top-0 bottom-0 flex items-center justify-center cursor-pointer;
+}
+
+.newsletter-btn i {
+  @apply text-[21px] text-black;
+}
+
+/* ===== SOCIAL MEDIA ===== */
+.social-media {
+  @apply my-[22px] mx-[-2px] flex flex-row md:mt-10 md:mr-0 md:mb-6 md:ml-0 md:flex-wrap;
+}
+
+.social-item {
+  @apply m-[2px] text-[17px] font-normal leading-relaxed text-black;
+  font-family: 'Poppins', sans-serif;
+}
+
+.social-link {
+  @apply transition-all duration-300 ease-in-out w-[35px] h-[35px] flex items-center justify-center;
+  @apply leading-[11px] bg-white border border-solid border-[#e1dfdf] rounded-[5px];
+  @apply text-black;
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+/* ===== COPYRIGHT ===== */
+.footer-copyright {
+  @apply w-full py-5 border-t border-solid border-[#e9e9e9] text-center;
+}
+
+.copyright-text {
+  @apply text-sm text-black leading-[1.2];
+  font-family: 'Poppins', sans-serif;
+}
+
+.copyright-text a {
+  color: var(--brand-primary);
+}

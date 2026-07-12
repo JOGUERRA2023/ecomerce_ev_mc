@@ -1,0 +1,28 @@
+<div class="image-preview-container">
+  <div class="vehicle-detail-banner banner-content clearfix">
+    <div class="banner-slider">
+      <div class="main-image-wrapper">
+        <div class="main-image-container zoom-image-hover">
+          <img
+            [ngSrc]="getImageUrl(featuredImageUrl())"
+            [alt]="'Product image'"
+            class="product-image"
+            fill
+          />
+        </div>
+      </div>
+
+      <div class="slider slider-nav thumb-image">
+        <div class="thumbnail-grid">
+          @for (productImage of productImages(); track productImage.image; let i = $index) {
+            <button type="button" class="thumbnail-image" (click)="selectImage(i)">
+              <div class="thumbImg" [class.active]="selectedImageIndex() === i">
+                <img [src]="getImageUrl(productImage.image!)" [alt]="'Thumbnail ' + (i + 1)" />
+              </div>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

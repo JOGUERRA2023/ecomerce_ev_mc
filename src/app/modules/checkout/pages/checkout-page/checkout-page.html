@@ -1,0 +1,155 @@
+<section class="checkout-section">
+  <div class="checkout-container">
+    <h1 class="checkout-title">Finalizar Compra</h1>
+
+    @if (cartItems().length === 0 && !showSuccessModal()) {
+      <div class="checkout-empty">
+        <p>Tu carrito está vacío.</p>
+        <a routerLink="/products" class="cr-button">Ver productos</a>
+      </div>
+    } @else {
+      <form class="checkout-grid" (ngSubmit)="onSubmit()" [formGroup]="checkoutForm">
+        <div class="checkout-main">
+          <div class="checkout-card">
+            <h4 class="checkout-sub-title">Información de la Orden</h4>
+
+            <div class="checkout-row">
+              <div class="form-group">
+                <label for="firstName" class="label-auth">Nombre*</label>
+                <input id="firstName" type="text" class="input-auth" formControlName="firstName" />
+                @if (f.firstName.touched && f.firstName.invalid) {
+                  <span class="error-message">El nombre debe tener al menos 2 caracteres</span>
+                }
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="label-auth">Apellido*</label>
+                <input id="lastName" type="text" class="input-auth" formControlName="lastName" />
+                @if (f.lastName.touched && f.lastName.invalid) {
+                  <span class="error-message">El apellido debe tener al menos 2 caracteres</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address" class="label-auth">Dirección*</label>
+              <input id="address" type="text" class="input-auth" formControlName="address" />
+              @if (f.address.touched && f.address.invalid) {
+                <span class="error-message">La dirección debe tener al menos 5 caracteres</span>
+              }
+            </div>
+
+            <div class="checkout-row">
+              <div class="form-group">
+                <label for="city" class="label-auth">Ciudad*</label>
+                <select id="city" class="input-auth" formControlName="city">
+                  @for (city of cities; track city) {
+                    <option [value]="city">{{ city }}</option>
+                  }
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="postalCode" class="label-auth">Código Postal*</label>
+                <input id="postalCode" type="text" class="input-auth" formControlName="postalCode" />
+                @if (f.postalCode.touched && f.postalCode.invalid) {
+                  <span class="error-message">El código postal debe tener al menos 3 caracteres</span>
+                }
+              </div>
+            </div>
+
+            <div class="checkout-row">
+              <div class="form-group">
+                <label for="country" class="label-auth">País*</label>
+                <select id="country" class="input-auth" formControlName="country">
+                  @for (country of countries; track country) {
+                    <option [value]="country">{{ country }}</option>
+                  }
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="state" class="label-auth">Estado*</label>
+                <select id="state" class="input-auth" formControlName="state">
+                  @for (state of states; track state) {
+                    <option [value]="state">{{ state }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-card">
+            <h4 class="checkout-sub-title">Método de Envío</h4>
+            <div class="checkout-options">
+              <label class="checkout-option">
+                <input type="radio" formControlName="shippingMethod" value="free" />
+                <span>Envío Gratis</span>
+                <span class="checkout-option-price">S/0.00</span>
+              </label>
+              <label class="checkout-option">
+                <input type="radio" formControlName="shippingMethod" value="fixed" />
+                <span>Tarifa Fija</span>
+                <span class="checkout-option-price">S/5.00</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-card">
+            <h4 class="checkout-sub-title">Método de Pago</h4>
+            <div class="checkout-options">
+              <label class="checkout-option">
+                <input type="radio" formControlName="paymentMethod" value="delivery" />
+                <span>Delivery</span>
+              </label>
+              <label class="checkout-option">
+                <input type="radio" formControlName="paymentMethod" value="yape" />
+                <span>Yape</span>
+              </label>
+              <label class="checkout-option">
+                <input type="radio" formControlName="paymentMethod" value="transfer" />
+                <span>Transferencia de Banco</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <aside class="checkout-aside">
+          <div class="checkout-card checkout-summary">
+            <h4 class="checkout-sub-title">Resumen del Carrito</h4>
+            <ul class="checkout-summary-items">
+              @for (item of cartItems(); track item.id) {
+                <li class="checkout-summary-item">
+                  <span class="checkout-summary-item-name">{{ item.name }} x{{ item.quantity }}</span>
+                  <span>S/{{ ((item.price ?? 0) * (item.quantity ?? 0)).toFixed(2) }}</span>
+                </li>
+              }
+            </ul>
+            <div class="checkout-summary-totals">
+              <div class="checkout-summary-row">
+                <span>Subtotal</span>
+                <span>S/{{ subtotal().toFixed(2) }}</span>
+              </div>
+              <div class="checkout-summary-row">
+                <span>Envío</span>
+                <span>S/{{ shippingCostSignal().toFixed(2) }}</span>
+              </div>
+              <div class="checkout-summary-row checkout-summary-total">
+                <span>Total</span>
+                <span>S/{{ total().toFixed(2) }}</span>
+              </div>
+            </div>
+            <button type="submit" class="cr-button checkout-submit" [disabled]="isSubmitting()">
+              @if (isSubmitting()) {
+                Procesando...
+              } @else {
+                Confirmar Compra
+              }
+            </button>
+          </div>
+        </aside>
+      </form>
+    }
+  </div>
+</section>
+
+@if (showSuccessModal()) {
+  <app-order-success-modal [order]="checkoutOrder()" (confirmed)="onModalConfirm()"></app-order-success-modal>
+}

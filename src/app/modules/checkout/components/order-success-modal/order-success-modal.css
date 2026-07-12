@@ -1,0 +1,69 @@
+@reference "tailwindcss";
+
+.cr-modal-overlay {
+  @apply w-full h-screen fixed z-40 top-0 left-0 bg-[#000000b3];
+}
+
+.cr-modal-container {
+  @apply fixed inset-0 z-50 flex items-center justify-center px-[16px];
+}
+
+.cr-modal-card {
+  @apply w-full max-w-[420px] bg-white rounded-[8px] p-[32px] text-center;
+  box-shadow: 0 8px 24px rgba(61, 90, 69, 0.2);
+}
+
+.cr-modal-icon {
+  @apply mb-[16px] flex items-center justify-center;
+  color: var(--brand-primary);
+  font-size: 56px;
+  line-height: 1;
+}
+
+.cr-modal-title {
+  @apply mb-[10px] text-[22px] font-bold;
+  color: var(--brand-dark);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cr-modal-text {
+  @apply mb-[20px] text-[14px] text-[#7a7a7a];
+  font-family: 'Manrope', sans-serif;
+}
+
+.cr-modal-summary {
+  @apply mb-[24px] p-[16px] rounded-[8px] text-left;
+  background-color: var(--brand-bg-alt);
+}
+
+.cr-modal-summary-row {
+  @apply flex justify-between text-[14px] py-[4px];
+  font-family: 'Manrope', sans-serif;
+  color: var(--brand-dark);
+}
+
+.cr-modal-summary-total {
+  @apply mt-[6px] pt-[10px] font-bold text-[16px];
+  border-top: 1px solid #e9e9e9;
+}
+
+.cr-button {
+  @apply h-[44px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
+  @apply text-[15px] capitalize leading-[1.2] text-white cursor-pointer border-0;
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  &:hover:not(:disabled) {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
+  &:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+}
+
+.cr-modal-button {
+  @apply w-full mt-[6px];
+}

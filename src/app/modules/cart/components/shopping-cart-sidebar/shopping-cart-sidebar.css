@@ -1,0 +1,149 @@
+@reference "tailwindcss";
+
+.cr-cart-overlay {
+  @apply w-full h-screen hidden fixed z-10 top-0 left-0 bg-[#000000b3];
+}
+
+.cr-cart-view {
+  @apply h-full fixed top-0 right-[-350px] z-20 transition-all duration-[0.4s] ease-in text-black;
+}
+
+.cr-cart-view-active {
+  @apply right-0;
+}
+
+.cr-cart-inner {
+  @apply w-[350px] h-full m-0 px-[20px] bg-white relative z-9 flex flex-col justify-between;
+  @apply max-[576px]:w-[300px] max-[360px]:w-[280px];
+}
+
+.cr-cart-title {
+  @apply mb-[15px] py-[15px] flex flex-row justify-between items-center;
+  @apply border-b border-solid border-[#e9e9e9];
+}
+
+.cr-cart-title h6 {
+  @apply m-0 text-[17px] font-bold text-[#2b2b2d] leading-[1.2];
+  font-family: 'Manrope', sans-serif;
+}
+
+.close-cart {
+  @apply text-[#fb5555] text-[20px] font-extrabold bg-transparent border-0 cursor-pointer;
+}
+
+.crcart-pro-items {
+  @apply list-none p-0 m-0;
+}
+
+.cart-product-item {
+  @apply mb-[20px] pb-[20px] flex overflow-hidden border-b border-solid border-[#e9e9e9];
+}
+
+.crside_pro_img {
+  @apply m-auto grow basis-[20%];
+}
+
+.crside_pro_img img {
+  @apply max-w-full rounded-[5px];
+}
+
+.cr-pro-content {
+  @apply pl-[15px] relative grow basis-[70%] overflow-hidden;
+}
+
+.cart_pro_title {
+  @apply w-full pr-[30px] whitespace-normal overflow-hidden text-ellipsis block;
+  @apply text-[15px] leading-[18px] font-normal text-black;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-price {
+  @apply mt-[5px] text-[14px] block;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-price span {
+  @apply text-[#777] font-bold text-[16px];
+}
+
+.cr-cart-qty {
+  @apply mt-[5px];
+}
+
+.cart-qty-plus-minus {
+  @apply m-0 w-[80px] h-[30px] relative overflow-hidden flex;
+  @apply bg-white border border-solid border-[#e9e9e9] rounded-[5px];
+  @apply items-center justify-between;
+}
+
+.qty-btn {
+  @apply h-[25px] w-[25px] mt-[-2px] border-0 bg-transparent flex justify-center items-center cursor-pointer;
+}
+
+.quantity {
+  @apply w-[30px] m-0 p-0 text-[#444] float-left text-[14px] font-semibold;
+  @apply leading-[38px] h-auto text-center outline-0;
+}
+
+.remove {
+  @apply py-0 px-[9px] absolute top-0 right-0 text-[17px] leading-[15px] bg-white text-[#fb5555];
+}
+
+.cr-cart-bottom {
+  @apply relative top-[-20px];
+}
+
+.cart-sub-total {
+  @apply mt-[20px] mb-[10px] pt-0 pb-[8px] flex flex-wrap justify-between;
+  @apply border-t border-solid border-[#e9e9e9];
+}
+
+.cart-table {
+  @apply mt-[10px] w-full;
+}
+
+.cart-table td {
+  @apply py-[7px];
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-table td:first-child {
+  @apply text-left text-[16px] text-black font-normal;
+}
+
+.cart-table td:last-child {
+  @apply text-right text-[15px] text-black font-bold;
+}
+
+.cart_btn {
+  @apply flex justify-between;
+}
+
+.cr-button {
+  @apply h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
+  @apply text-[14px] capitalize leading-[1.2] text-white;
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
+}
+
+.cr-btn-secondary {
+  @apply h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
+  @apply text-[14px] capitalize leading-[1.2] bg-white;
+  @apply flex items-center justify-center;
+  color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  &:hover {
+    color: white;
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
+}

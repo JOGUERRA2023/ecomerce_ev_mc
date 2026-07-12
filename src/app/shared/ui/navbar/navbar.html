@@ -1,0 +1,186 @@
+<header class="navbar-header">
+  <div class="cr-container">
+    <div class="cr-row">
+      <div class="cr-col">
+        <div class="top-header">
+          <a [routerLink]="['/']" class="cr-logo">
+            <img src="/img/logo/logo.png" alt="logo" class="logo" />
+            <img src="/img/logo/dark-logo.png" alt="logo" class="dark-logo" />
+          </a>
+
+          @defer (hydrate on interaction) {
+            <app-input-search-product />
+          } @placeholder {
+            <div class="h-[100px]"></div>
+          }
+
+          <div class="cr-right-bar">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a [routerLink]="['/products']" class="nav-link dropdown-toggle cr-right-bar-item">
+                  <i class="ri-user-3-line"></i>
+                  <span>Cuenta</span>
+                </a>
+                <ul class="dropdown-menu">
+                  @if (!isAuthenticated()) {
+                    <li>
+                      <a class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
+                    </li>
+                  } @else {
+                    <li>
+                      <button type="button" (click)="logout()" class="dropdown-item">
+                        Cerrar Sesión
+                      </button>
+                    </li>
+                  }
+                </ul>
+              </li>
+            </ul>
+            <a routerLink="/wishlist" class="cr-right-bar-item pr-[30px]">
+              <i class="ri-heart-3-line"></i>
+              <span>Favoritos</span>
+            </a>
+            <button class="cr-right-bar-item Shopping-toggle" (click)="openCart()">
+              <span class="cart-icon-wrapper mr-desktop">
+                <i class="ri-shopping-cart-line"></i>
+                @if (cartCount() > 0) {
+                  <span class="cart-badge">
+                    {{ cartCount() }}
+                  </span>
+                }
+              </span>
+              <span>Carrito</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cr-fix" id="cr-main-menu-desk">
+    <div class="cr-container">
+      <div class="cr-menu-list">
+        <div class="cr-category-icon-block">
+          <div class="cr-category-menu">
+            <button (click)="open()" class="cr-category-toggle">
+              <i class="ri-menu-2-line"></i>
+            </button>
+          </div>
+          <div class="cr-cat-dropdown">
+            <div class="cr-cat-block">
+              <div class="cr-cat-tab flex">
+                <ul class="cr-tab-list" id="myTab">
+                  @for (cat of categoryFeatureService.categories(); track cat.id) {
+                    <li class="cr-tab-item">
+                      <a href="">
+                        <i [attr.class]="(cat.icon || '') + ' pr-[8px]'"></i>{{ cat.name }}
+                      </a>
+                    </li>
+                  }
+                  <a class="cr-tab-view-all" href="javascript:void(0)"> Ver Todo </a>
+                </ul>
+                <div
+                  class="tab-content transition-all duration-300 ease-in-out w-full"
+                  id="myTabContent"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="cr-navbar">
+          <button type="button" class="navbar-toggler" aria-label="Abrir menú de navegación">
+            <i class="ri-menu-3-line"></i>
+          </button>
+          <div class="cr-header-buttons">
+            <ul class="navbar-nav flex flex-col">
+              <li class="md:nav-item dropdown">
+                <a class="nav-link">
+                  <i class="ri-user-3-line"></i>
+                </a>
+                <ul class="dropdown-menu right-0">
+                  <!-- <li>
+                    <a class="dropdown-item" href="register.html">Registrarse</a>
+                  </li> -->
+                  <!-- @if (true) {
+                    <li>
+                      <button class="dropdown-item">Cerrar Sesión</button>
+                    </li>
+                  } @else {
+                    <li>
+                      <a class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
+                    </li>
+                  } -->
+                </ul>
+              </li>
+            </ul>
+            <a routerLink="/wishlist" class="cr-right-bar-item">
+              <i class="ri-heart-line"></i>
+            </a>
+            <a
+              href="javascript:void(0)"
+              class="cr-right-bar-item Shopping-toggle"
+              (click)="openCart()"
+            >
+              <span class="cart-icon-wrapper">
+                <i class="ri-shopping-cart-line"></i>
+                @if (cartCount() > 0) {
+                  <span class="cart-badge">
+                    {{ cartCount() }}
+                  </span>
+                }
+              </span>
+            </a>
+          </div>
+          <div class="navbar-content" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle">
+                  Inicio <i class="ri-arrow-down-s-line"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item">Abarrotes</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item">Moda</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle">
+                  Categorías <i class="ri-arrow-down-s-line"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  @for (cat of categoryFeatureService.categories(); track cat.id) {
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0)">
+                        {{ cat.name }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              </li>
+              <li class="nav-item dropdown" [class.open]="">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)">
+                  Productos <i class="ri-arrow-down-s-line"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  @for (product of products(); track product.id) {
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0)">
+                        {{ product.name }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="cr-calling">
+          <i class="ri-phone-line"></i>
+          <a href="#">+123 ( 456 ) ( 7890 )</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

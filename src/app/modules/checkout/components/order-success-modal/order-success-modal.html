@@ -1,0 +1,36 @@
+<div class="cr-modal-overlay"></div>
+
+<div class="cr-modal-container" role="dialog" aria-modal="true" aria-labelledby="order-success-title">
+  <div class="cr-modal-card">
+    <div class="cr-modal-icon">
+      <i class="ri-checkbox-circle-fill"></i>
+    </div>
+    <h3 id="order-success-title" class="cr-modal-title">Compra Exitosa</h3>
+    <p class="cr-modal-text">
+      Tu orden
+      @if (order()?.id) {
+        <strong>#{{ order()!.id.slice(0, 8) }}</strong>
+      }
+      ha sido generada correctamente.
+    </p>
+
+    @if (order(); as currentOrder) {
+      <div class="cr-modal-summary">
+        <div class="cr-modal-summary-row">
+          <span>Subtotal</span>
+          <span>S/{{ currentOrder.subtotal.toFixed(2) }}</span>
+        </div>
+        <div class="cr-modal-summary-row">
+          <span>Envío</span>
+          <span>S/{{ currentOrder.shippingCost.toFixed(2) }}</span>
+        </div>
+        <div class="cr-modal-summary-row cr-modal-summary-total">
+          <span>Total</span>
+          <span>S/{{ currentOrder.total.toFixed(2) }}</span>
+        </div>
+      </div>
+    }
+
+    <button type="button" class="cr-button cr-modal-button" (click)="onConfirm()">Aceptar</button>
+  </div>
+</div>

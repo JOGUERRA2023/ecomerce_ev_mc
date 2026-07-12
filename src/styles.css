@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+@import 'remixicon/fonts/remixicon.css';
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/font/manrope/Manrope-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/poppins/Poppins-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+:root {
+  --brand-primary: #3D5A45;      /* Verde Oliva */
+  --brand-dark: #1C2B20;         /* Bosque Profundo para texto */
+  --brand-muted: #8F9779;        /* Verde Sabio secundario */
+  --brand-accent: #D9A752;       /* Oro Ochre para estrellas/destaques */
+  --brand-bg: #FDFBF7;           /* Blanco Alabastro/Crema */
+  --brand-bg-alt: #F8F6F2;       /* Arena suave para fondos alternos */
+}
+
+@theme {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-bg-alt: var(--brand-bg-alt);
+}
+
+.font-Poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-Manrope {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* ===== CLASES GLOBALES REUTILIZABLES ===== */
+
+.cr-container {
+  @apply flex flex-wrap justify-between relative items-center mx-auto;
+  @apply min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px];
+}
+
+.cr-row {
+  @apply flex flex-wrap w-full;
+}
+
+.cr-col {
+  @apply w-full px-[12px];
+}
+
+/* Dropdown común */
+.dropdown-menu {
+  @apply transition-all duration-300 ease-in-out py-[8px] min-w-[160px] mt-[35px] top-6 absolute text-left;
+  @apply opacity-0 invisible left-auto bg-white rounded-[5px] block z-[9];
+  @apply border border-solid border-[#e9e9e9];
+}
+
+.nav-item:hover .dropdown-menu {
+  @apply opacity-100 visible mt-[20px];
+}
+
+.dropdown-item {
+  @apply transition-all duration-300 ease-in-out py-[7px] px-[20px] text-start bg-white relative capitalize;
+  @apply block w-full text-[#777] text-[13px] font-normal cursor-pointer;
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+/* ===== SKELETON ANIMATION ===== */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    background-color: var(--brand-bg-alt);
+  }
+  50% {
+    background-color: color-mix(in srgb, var(--brand-muted) 20%, transparent);
+  }
+}
+
+.animate-skeleton {
+  animation: skeleton-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

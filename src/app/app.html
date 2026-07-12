@@ -1,0 +1,16 @@
+<app-navbar />
+<router-outlet />
+
+@defer (hydrate on viewport) {
+  <app-footer />
+} @placeholder {
+  <div class="h-[100px]"></div>
+}
+
+<app-sidebar />
+<app-shopping-cart-sidebar />
+<app-alerts />
+
+@defer (hydrate on viewport) {
+  <app-chat-bot />
+}

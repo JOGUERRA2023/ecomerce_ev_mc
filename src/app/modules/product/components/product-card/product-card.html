@@ -1,0 +1,41 @@
+<div class="w-full px-[12px] mb-[24px]">
+  <div class="cr-product-card">
+    <div class="cr-product-image">
+      <div class="cr-image-inner zoom-image-hover">
+        <img
+          [ngSrc]="`https://maraviyainfotech.com/projects/carrot-tailwind/assets/${product().image}`"
+          width="600"
+          height="600"
+          alt="product-1"
+        />
+      </div>
+      <div class="cr-side-view">
+        <button (click)="addToWishList()" class="wishlist" [attr.aria-label]="isInWishlist() ? 'Quitar de favoritos' : 'Agregar a favoritos'">
+          <i [class]="isInWishlist() ? 'ri-heart-fill text-brand-primary' : 'ri-heart-line'"></i>
+        </button>
+        <a class="model-oraganic-product cr-modal-toggle">
+          <i class="ri-eye-line"></i>
+        </a>
+      </div>
+      <button (click)="addToCart()" class="cr-shopping-bag cursor-pointer hover:opacity-70">
+        <i class="ri-shopping-bag-line"></i>
+      </button>
+    </div>
+    <div class="cr-product-details">
+      <div class="cr-brand">
+        <a href="shop-left-sidebar.html">Bakery</a>
+        <div class="cr-star">
+          @for (ratingDetail of ratingArray(); track $index) {
+            <i class="ri-star-fill"></i>
+          }
+          <p>({{ product().rating }})</p>
+        </div>
+      </div>
+      <a [routerLink]="['/products', product().id]" class="title">{{ product().name }}</a>
+      <p class="cr-price">
+        <span class="new-price">{{ product().price }}</span>
+        <span class="old-price">{{ (product().price ?? 0) + 1.3 }}</span>
+      </p>
+    </div>
+  </div>
+</div>

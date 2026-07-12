@@ -1,0 +1,28 @@
+<section class="section-popular-product-shape">
+  <div class="popular-product-container" data-aos="fade-up" data-aos-duration="2000">
+    <div class="cr-row">
+      <div class="cr-col">
+        <div class="mb-[30px]">
+          <div class="cr-banner">
+            <h2 class="popular-title">Productos populares</h2>
+          </div>
+          <div class="cr-banner-sub-title">
+            <p class="popular-subtitle">
+              Productos más vendidos en la tienda. Ofrecemos una amplia gama de productos para satisfacer tus
+              necesidades.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-content" id="MixItUpDA2FB7">
+      <div class="w-full mb-[24px]">
+        <div class="product-grid">
+          @for(product of products(); track product.id) {
+          <app-product-card [product]="product"></app-product-card>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,204 @@
+@reference "tailwindcss";
+
+/* ===== HEADER ===== */
+.navbar-header {
+  @apply h-[142px] max-[992px]:h-[133px] max-[576px]:h-[173px];
+  @apply bg-white border-b border-solid border-[#e9e9e9];
+}
+
+/* ===== TOP HEADER ===== */
+.top-header {
+  @apply py-[20px] flex flex-row gap-[10px] justify-between;
+  @apply border-b border-solid border-[#e9e9e9] relative z-[4];
+  @apply max-[576px]:py-[15px] max-[576px]:block;
+}
+
+.cr-logo {
+  @apply max-[576px]:mb-[15px] max-[576px]:flex max-[576px]:justify-center;
+}
+
+.cr-logo img {
+  @apply block h-[35px] w-[115px] max-[576px]:w-[100px];
+}
+
+.cr-logo .dark-logo {
+  @apply hidden;
+}
+
+/* ===== RIGHT BAR (Desktop) ===== */
+.cr-right-bar {
+  @apply flex max-[992px]:hidden;
+}
+
+.cr-right-bar-item {
+  @apply transition-all duration-300 ease-in-out flex items-center;
+}
+
+.cr-right-bar-item i {
+  @apply pr-[5px] text-[21px] leading-[17px];
+}
+
+.cr-right-bar-item span {
+  @apply transition-all duration-300 ease-in-out text-[15px] leading-[15px] font-medium text-black;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== NAV LINKS ===== */
+.nav-link {
+  @apply transition-all duration-300 ease-in-out flex items-center relative;
+  @apply text-[14px] font-medium text-black z-[1] py-[11px] px-[8px];
+  @apply max-[1200px]:py-[8px];
+}
+
+.nav-link i {
+  @apply pr-[5px] text-[21px] leading-[17px];
+}
+
+.nav-link span {
+  @apply transition-all duration-300 ease-in-out text-[15px] leading-[15px] font-medium text-black tracking-[0.03rem];
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== MAIN MENU ===== */
+.cr-menu-list {
+  @apply w-full px-[12px] relative flex items-center flex-row justify-between;
+}
+
+/* ===== CATEGORY BLOCK ===== */
+.cr-category-icon-block {
+  @apply py-[10px] max-[992px]:hidden;
+}
+
+.cr-category-toggle {
+  @apply w-[35px] h-[35px] border border-solid border-[#e9e9e9] rounded-[5px];
+  @apply cursor-pointer flex items-center justify-center;
+}
+
+.cr-category-toggle i {
+  @apply text-[22px] text-[#2b2b2d] leading-[14px] block;
+}
+
+.cr-cat-dropdown {
+  @apply transition-all duration-300 ease-in-out w-[600px] mt-[15px] p-[15px];
+  @apply absolute bg-white opacity-0 invisible left-[12px] z-[10];
+  @apply rounded-[5px] border border-solid border-[#e9e9e9];
+}
+
+.cr-category-menu:hover .cr-cat-dropdown {
+  @apply opacity-100 visible;
+}
+
+.cr-tab-list {
+  @apply min-w-[180px] mr-[12px] rounded-[5px] flex flex-wrap flex-col justify-center;
+}
+
+.cr-tab-item {
+  @apply transition-all duration-300 ease-in-out py-[10px] px-[15px] bg-white;
+  @apply border border-solid border-[#e9e9e9] rounded-[5px];
+  @apply flex items-center cursor-pointer mb-[5px];
+}
+
+.cr-tab-item a {
+  @apply text-[13px] text-[#4b5966] tracking-[0] font-medium text-left capitalize;
+}
+
+.cr-tab-item a i {
+  @apply pr-[8px];
+}
+
+.cr-tab-view-all {
+  @apply transition-all duration-300 ease-in-out py-[10px] px-[15px] bg-white;
+  @apply text-[13px] text-[#4b5966] font-medium text-left capitalize;
+  @apply border border-solid border-[#e9e9e9] rounded-[5px] flex items-center;
+}
+
+/* ===== NAVBAR ===== */
+.cr-navbar {
+  @apply justify-between relative flex flex-wrap items-center;
+  @apply max-[992px]:w-full max-[992px]:py-[10px];
+}
+
+.navbar-toggler {
+  @apply py-[7px] px-[14px] hidden text-[16px] leading-none cursor-pointer;
+  @apply max-[992px]:flex max-[992px]:p-0 max-[992px]:border-0;
+}
+
+.navbar-toggler i {
+  @apply max-[992px]:text-[20px];
+}
+
+/* ===== HEADER BUTTONS (Mobile) ===== */
+.cr-header-buttons {
+  @apply hidden max-[992px]:flex max-[992px]:items-center;
+}
+
+.cr-header-buttons .nav-link {
+  @apply max-[1200px]:px-0 max-[992px]:mr-[20px];
+}
+
+.cr-header-buttons .nav-link i {
+  @apply text-[20px] pr-0;
+}
+
+.cr-header-buttons .cr-right-bar-item {
+  @apply mr-[16px] max-[992px]:mr-[20px];
+}
+
+.cr-header-buttons .cr-right-bar-item:last-child {
+  @apply max-[992px]:m-0;
+}
+
+.cr-header-buttons .cr-right-bar-item i {
+  @apply text-[20px] pr-0;
+}
+
+/* ===== NAVBAR CONTENT (Desktop) ===== */
+.navbar-content {
+  @apply min-[992px]:flex min-[992px]:basis-auto grow items-center hidden;
+}
+
+.navbar-nav {
+  @apply flex min-[992px]:flex-row items-center m-auto relative z-[3];
+  @apply max-[1200px]:mr-[-5px] max-[992px]:m-0;
+}
+
+.nav-item {
+  @apply relative mr-[25px] max-[1400px]:mr-[20px] max-[1200px]:mr-[30px];
+}
+
+.nav-item .nav-link {
+  @apply text-[14px] font-medium block text-black z-[1];
+  @apply flex items-center relative py-[11px] px-[8px];
+  @apply max-[1200px]:py-[8px] max-[1200px]:px-0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== CALLING ===== */
+.cr-calling {
+  @apply flex justify-end items-center max-[1200px]:hidden;
+}
+
+.cr-calling i {
+  @apply pr-[5px] text-[20px];
+}
+
+.cr-calling a {
+  @apply text-[15px] font-medium;
+}
+
+.cart-icon-wrapper {
+  @apply relative flex items-center;
+}
+
+.cart-icon-wrapper.mr-desktop {
+  @apply mr-2;
+}
+
+.cart-icon-wrapper i {
+  @apply !pr-0;
+}
+
+.cart-badge {
+  @apply absolute -top-2 -right-2.5 flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold text-white shadow-sm ring-1 ring-white;
+  background-color: var(--brand-accent);
+}

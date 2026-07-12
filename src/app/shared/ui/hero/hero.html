@@ -1,0 +1,65 @@
+<section class="section-hero next">
+  <div class="cr-slider">
+    <div class="relative h-full">
+      @for (slide of slides; track slide.id) {
+        <div [class]="'slide-item ' + (currentSlide() === slide.id ? 'active' : 'inactive')">
+          <div class="cr-hero-banner">
+            <img
+              [ngSrc]="slide.image"
+              alt="Hero de productos de la tienda mitocommerce"
+              fill
+              priority
+            />
+            <div class="hero-container">
+              <div class="cr-row">
+                <div class="cr-col">
+                  <div
+                    class="cr-left-side-contain"
+                    [class.animate-fade-in]="currentSlide() === slide.id"
+                  >
+                    <h5 class="hero-subtitle">
+                      <span>100%</span>
+                      {{ slide.subtitle }}
+                    </h5>
+                    <h1 class="hero-title">{{ slide.title }}</h1>
+                    <p class="hero-description">{{ slide.description }}</p>
+                    <div class="cr-last-buttons">
+                      <a [href]="slide.buttonLink" class="cr-button">
+                        {{ slide.buttonText }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <button
+      (click)="previousSlide()"
+      class="slider-arrow slider-arrow-left"
+      aria-label="Slide anterior"
+    >
+      <i class="ri-arrow-left-s-line"></i>
+    </button>
+    <button
+      (click)="nextSlide()"
+      class="slider-arrow slider-arrow-right"
+      aria-label="Siguiente slide"
+    >
+      <i class="ri-arrow-right-s-line"></i>
+    </button>
+
+    <div class="slider-dots">
+      @for (slide of slides; track slide.id) {
+        <button
+          (click)="goToSlide(slide.id)"
+          [class]="'slider-dot ' + (currentSlide() === slide.id ? 'active' : 'inactive')"
+          [attr.aria-label]="'Ir al slide ' + (slide.id + 1)"
+        ></button>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+<div
+  class="product-list-container"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+  data-aos-delay="600"
+>
+  <div class="cr-row">
+    <div class="cr-col">
+      <div class="cr-shop-bredekamp">
+        <div class="cr-toggle">
+          <a href="javascript:void(0)" class="gridCol active-grid">
+            <i class="ri-grid-line"></i>
+          </a>
+        </div>
+        <div class="center-content">
+          @if (isLoading()) {
+            <div class="h-4 w-48 rounded animate-skeleton ml-3"></div>
+          } @else if (hasError()) {
+            <span>Ocurrió un error al cargar los productos. Intenta nuevamente.</span>
+          } @else {
+            <span>¡Encontramos {{ this.productCount() }} productos para ti!</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading()) {
+    <div class="col-100">
+      <div class="cr-product-box">
+        @for (i of [1, 2, 3, 4, 5, 6, 7, 8]; track i) {
+          <div class="w-full px-[12px] mb-[24px]">
+            <div class="border border-solid border-[#e9e9e9] rounded-[8px] p-[12px] bg-white flex flex-col h-full">
+              <div class="aspect-square rounded-[5px] mb-[15px] animate-skeleton"></div>
+              <div class="flex-1 flex flex-col text-center pt-[24px]">
+                <div class="flex justify-between items-center mb-[12px] px-2">
+                  <div class="h-3 w-16 rounded animate-skeleton"></div>
+                  <div class="flex gap-0.5">
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                    <div class="h-3 w-3 rounded-full animate-skeleton"></div>
+                  </div>
+                </div>
+                <div class="h-4 w-3/4 mx-auto rounded mb-[8px] animate-skeleton"></div>
+                <div class="h-4 w-1/2 mx-auto rounded mb-[12px] animate-skeleton"></div>
+                <div class="h-5 w-24 mx-auto rounded animate-skeleton mt-auto"></div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  } @else if (hasError()) {
+    <div class="col-100 py-[40px] text-center text-[#7a7a7a]">
+      Ocurrió un error al cargar los productos. Intenta nuevamente.
+    </div>
+  } @else {
+    <div class="col-100">
+      <div class="cr-product-box">
+        @for (product of products(); track product.id; let i = $index) {
+          <app-product-card [product]="product"></app-product-card>
+        }
+      </div>
+    </div>
+    <nav class="cr-pagination">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <span class="page-link">Anterior</span>
+        </li>
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">1</span>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+  }
+</div>

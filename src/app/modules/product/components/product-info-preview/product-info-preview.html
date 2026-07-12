@@ -1,0 +1,41 @@
+<div class="product-info-container">
+  <div class="cr-size-and-weight-contain">
+    <h2 id="product-name" class="heading">{{ product()?.name }}</h2>
+    <p class="product-description">{{ product()?.description }}</p>
+  </div>
+  <div class="cr-size-and-weight">
+    <div class="cr-review-star">
+      <div class="cr-star" [attr.aria-label]="'Valoración: ' + (product()?.rating ?? 0) + ' de 5 estrellas'" role="img">
+        @for (rating of ratingArray(); track $index) {
+          <i class="ri-star-fill rating-star" aria-hidden="true"></i>
+        }
+      </div>
+      <p class="review-count">( 75 Reseñas )</p>
+    </div>
+    <div class="cr-product-price">
+      <span class="new-price">{{ product()?.price }}</span>
+      <span class="old-price">{{ (product()?.price ?? 0) + 1 }}</span>
+    </div>
+    <div class="cr-add-card">
+      <div class="cr-qty-main">
+        <button type="button" class="qty-btn minus" (click)="decrement()" aria-label="Disminuir cantidad">-</button>
+        <input
+          type="text"
+          [value]="quantity()"
+          readonly
+          class="quantity"
+          aria-label="Cantidad"
+        />
+        <button type="button" class="qty-btn plus" (click)="increment()" aria-label="Aumentar cantidad">+</button>
+      </div>
+      <div class="cr-add-button">
+        <button type="button" class="cr-button cr-shopping-bag" (click)="addToCart()">Agregar a carrito</button>
+      </div>
+      <div class="cr-card-icon">
+        <button type="button" class="wishlist-btn" aria-label="Añadir a lista de deseos">
+          <i class="ri-heart-line"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
